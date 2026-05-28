@@ -30,20 +30,22 @@
         <!-- Header Section -->
         <header class="header animate-fade-in" id="main-header">
             <div class="logo">
-                <svg class="logo-icon" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="logo-icon" width="40" height="40" viewBox="20 20 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#00f2fe" />
-                            <stop offset="50%" stop-color="#00D2FF" />
-                            <stop offset="100%" stop-color="#00ff66" />
-                        </linearGradient>
+                        <!-- Shadow filter for the 3D overlap effect -->
+                        <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="-0.8" dy="1.2" stdDeviation="1" flood-color="#03040b" flood-opacity="0.6"/>
+                        </filter>
                     </defs>
-                    <!-- Conceptualsea Logo SVG: Sleek interlocking C and S node representing creative wave connections -->
-                    <path d="M 52 16 C 26 16, 16 36, 16 50 C 16 64, 26 84, 52 84 C 67 84, 76 77, 81 69 M 52 26 C 34 26, 28 40, 28 50 C 28 60, 34 74, 52 74" stroke="url(#logo-gradient)" stroke-width="8" stroke-linecap="round" />
-                    <path d="M 36 50 C 51 50, 51 36, 66 36 C 81 36, 86 50, 86 60 C 86 70, 76 80, 61 80" stroke="url(#logo-gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
-                    <circle cx="51" cy="50" r="5" fill="#00ff66" class="logo-pulse-dot" />
+                    <!-- Conceptualsea Logo: Sleek overlapping geometric chevron arrows -->
+                    <!-- Green Chevron (Left Half) -->
+                    <path d="M 63 40 L 28 49 L 49 60 Z" fill="#3df28d" />
+                    <!-- Green Chevron (Right Half) -->
+                    <path d="M 63 40 L 49 60 L 54 75 Z" fill="#10b981" />
+                    <!-- Teal Chevron (Top) with shadow -->
+                    <path d="M 72 28 L 37 37 L 58 48 L 63 63 Z" fill="#0d9488" filter="url(#logo-shadow)" />
                 </svg>
-                <span class="logo-brand">Conceptual<span class="brand-suffix">sea</span></span>
+                <span class="logo-brand">Conceptualsea</span>
             </div>
         </header>
 
