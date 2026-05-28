@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CONCEPTUALSEA - BRANDING AND CSS STYLING SYSTEM (REDESIGNED)
+   CONCEPTUALSEA - BRANDING AND CSS STYLING SYSTEM (MINIMALIST CORPORATE)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -9,26 +9,22 @@
     /* Fonts */
     --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-accent: 'Montserrat', sans-serif;
 
-    /* Color Palette (Matching provided branding image) */
-    --color-bg-dark: #120e3d;
-    --color-bg-gradient: linear-gradient(135deg, #141147 0%, #0c0a2a 100%);
-    --color-bg-ray: #231c6a;
-    
-    /* Brand Accents */
-    --color-neon-green: #3df28d; /* Bright green */
-    --color-teal-brand: #007a78; /* Dark teal block fill */
-    --color-teal-light: #2dd4bf; /* Text teal */
-    --color-purple: #4f1d96;
-    
+    /* Color Palette */
+    --color-bg-dark: #0a0b0d; /* Solid matte charcoal */
+    --color-border: rgba(255, 255, 255, 0.08);
+
     /* Text Colors */
-    --color-text-main: #f8fafc;
-    --color-text-sub: #94a3b8;
-    --color-text-muted: #4e567e;
+    --color-text-main: #ffffff;
+    --color-text-sub: #8e9cae; /* Matte slate grey */
+    --color-text-muted: #525f7a;
+
+    /* Subtle Accents (Logo chevrons are preserved but page elements are neutral) */
+    --color-accent-teal: #0d9488;
+    --color-accent-green: #10b981;
 
     /* Transitions */
-    --transition-speed: 0.35s;
+    --transition-speed: 0.25s;
     --transition-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -46,7 +42,6 @@ html, body {
     min-height: 100vh;
     font-family: var(--font-body);
     background-color: var(--color-bg-dark);
-    background-image: var(--color-bg-gradient);
     color: var(--color-text-main);
     overflow-x: hidden;
     line-height: 1.5;
@@ -54,85 +49,16 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: var(--color-bg-dark);
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
 /* --------------------------------------------------------------------------
-   3. Ambient Light Rays (Diagonal Background Shafts)
-   -------------------------------------------------------------------------- */
-.ray-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.ray {
-    position: absolute;
-    top: -50%;
-    height: 200%;
-    transform: rotate(-15deg);
-    background: linear-gradient(180deg, rgba(35, 28, 106, 0.45) 0%, rgba(35, 28, 106, 0) 100%);
-    animation: ray-pulse 10s infinite ease-in-out alternate;
-}
-
-.ray-1 {
-    left: 10%;
-    width: 180px;
-    animation-delay: 0s;
-}
-
-.ray-2 {
-    left: 40%;
-    width: 280px;
-    animation-delay: 2s;
-}
-
-.ray-3 {
-    left: 75%;
-    width: 120px;
-    animation-delay: 4s;
-}
-
-@keyframes ray-pulse {
-    0% {
-        opacity: 0.7;
-        transform: rotate(-15deg) scaleX(0.95);
-    }
-    100% {
-        opacity: 1;
-        transform: rotate(-13deg) scaleX(1.05);
-    }
-}
-
-/* --------------------------------------------------------------------------
-   4. Structure Layout
+   3. Structure Layout (Centered single-column layout)
    -------------------------------------------------------------------------- */
 .app-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    position: relative;
-    z-index: 10;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 2rem;
     justify-content: space-between;
 }
 
@@ -141,24 +67,26 @@ html, body {
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    padding: 4rem 0;
-}
-
-.hero-layout {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-    align-items: center;
+    padding: 6rem 0;
     width: 100%;
 }
 
+.hero-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 780px;
+}
+
 /* --------------------------------------------------------------------------
-   5. Header & Logo
+   4. Header & Logo
    -------------------------------------------------------------------------- */
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
 }
 
@@ -171,184 +99,58 @@ html, body {
 }
 
 .logo-icon {
-    filter: drop-shadow(0 0 6px rgba(13, 148, 136, 0.3));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
     transition: transform var(--transition-speed) var(--transition-ease);
 }
 
 .logo:hover .logo-icon {
-    transform: rotate(5deg) scale(1.05);
+    transform: translateY(-1px);
 }
 
 .logo-brand {
     font-family: var(--font-heading);
-    font-size: 1.45rem;
+    font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--color-text-main);
-    transition: color var(--transition-speed) var(--transition-ease);
-}
-
-.logo:hover .logo-brand {
-    color: var(--color-neon-green);
 }
 
 /* --------------------------------------------------------------------------
-   6. Left Info / Headings Section
+   5. Centered Hero Section
    -------------------------------------------------------------------------- */
-.info-section {
-    text-align: left;
-}
-
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 3.8rem;
-    font-weight: 800;
-    line-height: 1.1;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.15;
     letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
     color: var(--color-text-main);
+    max-width: 720px;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: var(--color-text-sub);
-    line-height: 1.6;
-    margin-bottom: 0;
-    max-width: 520px;
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    max-width: 620px;
 }
 
 /* --------------------------------------------------------------------------
-   7. Right Graphic Section ("WE BELIEVE")
-   -------------------------------------------------------------------------- */
-.graphic-section {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.we-believe-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 440px;
-}
-
-/* We Believe typographic Lockup */
-.we-believe-header {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
-}
-
-.we-text {
-    font-family: var(--font-accent);
-    font-size: 8.5rem;
-    font-weight: 800;
-    line-height: 0.8;
-    letter-spacing: -0.05em;
-    color: var(--color-neon-green);
-}
-
-.believe-badge {
-    position: absolute;
-    right: -95px;
-    top: 55%;
-    transform: translateY(-50%);
-    background-color: var(--color-teal-brand);
-    color: var(--color-text-main);
-    font-family: var(--font-accent);
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: 0.12em;
-    padding: 0.3rem 1rem;
-    border-radius: 2px;
-    user-select: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Pillars Capsules */
-.pillars-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    width: 100%;
-}
-
-.pillar-card {
-    display: flex;
-    align-items: center;
-    position: relative;
-    background-color: rgba(0, 122, 120, 0.18);
-    border: 1px solid rgba(0, 122, 120, 0.25);
-    border-radius: 100px;
-    padding: 0.85rem 1.5rem 0.85rem 4rem;
-    width: 100%;
-    transition: all var(--transition-speed) var(--transition-ease);
-}
-
-.pillar-card:hover {
-    background-color: rgba(0, 122, 120, 0.28);
-    border-color: rgba(0, 242, 254, 0.25);
-    transform: translateX(4px);
-}
-
-/* Skewed stripes on the left */
-.pillar-stripes {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%) skewX(-20deg);
-    display: flex;
-    gap: 4px;
-}
-
-.stripe {
-    width: 5px;
-    height: 18px;
-    border-radius: 1px;
-}
-
-.stripe-cyan {
-    background-color: var(--color-neon-teal);
-}
-
-.stripe-teal {
-    background-color: var(--color-teal-light);
-}
-
-.stripe-purple {
-    background-color: var(--color-purple);
-}
-
-.pillar-label {
-    font-family: var(--font-accent);
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.08em;
-    color: var(--color-teal-light);
-    transition: color var(--transition-speed) var(--transition-ease);
-}
-
-.pillar-card:hover .pillar-label {
-    color: var(--color-text-main);
-}
-
-/* --------------------------------------------------------------------------
-   8. Footer Area & Contacts
+   6. Footer Area & Social Group
    -------------------------------------------------------------------------- */
 .footer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     gap: 1.5rem;
 }
 
+/* Contact link styling */
 .contact-link {
     display: inline-flex;
     align-items: center;
@@ -357,7 +159,7 @@ html, body {
     color: var(--color-text-sub);
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all var(--transition-speed) var(--transition-ease);
+    transition: color var(--transition-speed) var(--transition-ease);
 }
 
 .contact-icon {
@@ -366,16 +168,17 @@ html, body {
 }
 
 .contact-link:hover {
-    color: var(--color-neon-green);
+    color: var(--color-text-main);
 }
 
 .contact-link:hover .contact-icon {
-    color: var(--color-neon-green);
+    color: var(--color-text-main);
 }
 
+/* Social group styling - Clean and Minimal */
 .social-group {
     display: flex;
-    gap: 0.85rem;
+    gap: 0.75rem;
     justify-content: center;
 }
 
@@ -383,22 +186,21 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.04);
     color: var(--color-text-sub);
     transition: all var(--transition-speed) var(--transition-ease);
     text-decoration: none;
 }
 
 .social-link:hover {
-    color: #03040b;
-    background: var(--color-neon-green);
-    border-color: transparent;
-    box-shadow: 0 0 15px rgba(61, 242, 141, 0.3);
-    transform: translateY(-2px);
+    color: var(--color-text-main);
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
 }
 
 .copyright-text {
@@ -407,7 +209,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   9. Entrance Animations
+   7. Entrance Animations
    -------------------------------------------------------------------------- */
 .animate-fade-in {
     animation: fade-in 1s var(--transition-ease) forwards;
@@ -415,7 +217,7 @@ html, body {
 
 .animate-slide-up {
     opacity: 0;
-    animation: slide-up 0.85s var(--transition-ease) forwards;
+    animation: slide-up 0.8s var(--transition-ease) forwards;
 }
 
 @keyframes fade-in {
@@ -426,7 +228,7 @@ html, body {
 @keyframes slide-up {
     from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(16px);
     }
     to {
         opacity: 1;
@@ -435,93 +237,42 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   10. Media Breakpoints & Responsiveness
+   8. Media Breakpoints & Responsiveness
    -------------------------------------------------------------------------- */
-@media (max-width: 968px) {
-    .hero-layout {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-        text-align: center;
-    }
-
-    .info-section {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-title {
-        font-size: 3.2rem;
-    }
-
-    .hero-subtitle {
-        margin-bottom: 2rem;
-    }
-
-    .graphic-section {
-        justify-content: center;
-    }
-    
-    .we-believe-container {
-        align-items: center;
-    }
-}
-
 @media (max-width: 768px) {
     .app-container {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1.5rem;
     }
 
     .main-content {
-        padding: 2rem 0;
+        padding: 4rem 0;
     }
 
     .hero-title {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
     }
 
-    .we-text {
-        font-size: 7.2rem;
-    }
-
-    .believe-badge {
-        font-size: 1.05rem;
-        right: -80px;
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-top: 1.25rem;
     }
 
     .footer {
         flex-direction: column;
         text-align: center;
         gap: 1.25rem;
-        padding-top: 1.5rem;
+        padding-top: 2rem;
     }
 
     .footer-left, .footer-center, .footer-right {
         width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2.1rem;
-    }
-
-    .we-text {
-        font-size: 6rem;
-    }
-
-    .believe-badge {
-        font-size: 0.95rem;
-        right: -70px;
-        padding: 0.25rem 0.75rem;
-    }
-    
-    .pillar-card {
-        padding: 0.75rem 1rem 0.75rem 3.5rem;
-    }
-    
-    .pillar-label {
-        font-size: 0.85rem;
+        font-size: 2.2rem;
     }
 }
