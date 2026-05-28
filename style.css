@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CONCEPTUALSEA - BRANDING AND CSS STYLING SYSTEM
+   CONCEPTUALSEA - BRANDING AND CSS STYLING SYSTEM (REDESIGNED)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -9,38 +9,25 @@
     /* Fonts */
     --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-accent: 'Montserrat', sans-serif;
 
-    /* Color Palette */
-    --color-bg-dark: #060713;
-    --color-bg-card: rgba(13, 16, 38, 0.45);
+    /* Color Palette (Matching provided branding image) */
+    --color-bg-dark: #120e3d;
+    --color-bg-gradient: linear-gradient(135deg, #141147 0%, #0c0a2a 100%);
+    --color-bg-ray: #231c6a;
     
-    /* Borders */
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-border-hover: rgba(0, 242, 254, 0.4);
-    --color-input-focus: rgba(0, 242, 254, 0.5);
-
+    /* Brand Accents */
+    --color-neon-green: #3df28d; /* Bright green */
+    --color-teal-brand: #007a78; /* Dark teal block fill */
+    --color-teal-light: #2dd4bf; /* Text teal */
+    --color-purple: #4f1d96;
+    
     /* Text Colors */
     --color-text-main: #f8fafc;
     --color-text-sub: #94a3b8;
-    --color-text-muted: #64748b;
+    --color-text-muted: #4e567e;
 
-    /* Accent & Brand Colors */
-    --color-neon-green: #00ff66;
-    --color-neon-teal: #00f2fe;
-    --color-neon-blue: #3b82f6;
-    
-    /* Gradients */
-    --grad-primary: linear-gradient(135deg, #00f2fe 0%, #00b8ff 50%, #00ff66 100%);
-    --grad-button: linear-gradient(90deg, #00f2fe 0%, #00ff66 100%);
-    --grad-button-hover: linear-gradient(90deg, #00ff66 0%, #00f2fe 100%);
-
-    /* Shadows & Glows */
-    --shadow-glass: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-    --shadow-glow-button: 0 0 25px rgba(0, 242, 254, 0.35);
-    --shadow-glow-success: 0 0 20px rgba(0, 255, 102, 0.15);
-    --shadow-glow-error: 0 0 20px rgba(ef, 44, 44, 0.15);
-
-    /* Animation and Transitions */
+    /* Transitions */
     --transition-speed: 0.35s;
     --transition-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -59,6 +46,7 @@ html, body {
     min-height: 100vh;
     font-family: var(--font-body);
     background-color: var(--color-bg-dark);
+    background-image: var(--color-bg-gradient);
     color: var(--color-text-main);
     overflow-x: hidden;
     line-height: 1.5;
@@ -82,85 +70,55 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   3. Ambient Background Elements
+   3. Ambient Light Rays (Diagonal Background Shafts)
    -------------------------------------------------------------------------- */
-/* Geometric Grid Overlay */
-.bg-grid {
+.ray-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-    background-size: 50px 50px;
+    overflow: hidden;
     pointer-events: none;
     z-index: 1;
 }
 
-/* Blurred Plasma Blobs */
-.blob-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(130px);
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.blob {
+.ray {
     position: absolute;
-    border-radius: 50%;
-    mix-blend-mode: screen;
+    top: -50%;
+    height: 200%;
+    transform: rotate(-15deg);
+    background: linear-gradient(180deg, rgba(35, 28, 106, 0.45) 0%, rgba(35, 28, 106, 0) 100%);
+    animation: ray-pulse 10s infinite ease-in-out alternate;
 }
 
-.blob-indigo {
-    width: 550px;
-    height: 550px;
-    background: radial-gradient(circle, rgba(79, 70, 229, 0.45) 0%, transparent 70%);
-    top: -15%;
-    left: -10%;
-    animation: float-blob-1 25s infinite alternate ease-in-out;
+.ray-1 {
+    left: 10%;
+    width: 180px;
+    animation-delay: 0s;
 }
 
-.blob-teal {
-    width: 480px;
-    height: 480px;
-    background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, transparent 70%);
-    bottom: -10%;
-    right: -5%;
-    animation: float-blob-2 20s infinite alternate-reverse ease-in-out;
+.ray-2 {
+    left: 40%;
+    width: 280px;
+    animation-delay: 2s;
 }
 
-.blob-green {
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(0, 255, 102, 0.25) 0%, transparent 70%);
-    top: 30%;
-    left: 65%;
-    animation: float-blob-3 28s infinite alternate ease-in-out;
+.ray-3 {
+    left: 75%;
+    width: 120px;
+    animation-delay: 4s;
 }
 
-@keyframes float-blob-1 {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(80px, -50px) scale(1.1); }
-    100% { transform: translate(-40px, 60px) scale(0.95); }
-}
-
-@keyframes float-blob-2 {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-60px, 80px) scale(1.05); }
-    100% { transform: translate(40px, -40px) scale(0.9); }
-}
-
-@keyframes float-blob-3 {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(50px, 50px) scale(1.15); }
-    100% { transform: translate(-70px, -70px) scale(0.85); }
+@keyframes ray-pulse {
+    0% {
+        opacity: 0.7;
+        transform: rotate(-15deg) scaleX(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-13deg) scaleX(1.05);
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -172,9 +130,9 @@ html, body {
     min-height: 100vh;
     position: relative;
     z-index: 10;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem;
     justify-content: space-between;
 }
 
@@ -183,7 +141,15 @@ html, body {
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    padding: 3rem 0;
+    padding: 4rem 0;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
 }
 
 /* --------------------------------------------------------------------------
@@ -205,7 +171,7 @@ html, body {
 }
 
 .logo-icon {
-    filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.3));
+    filter: drop-shadow(0 0 6px rgba(13, 148, 136, 0.3));
     transition: transform var(--transition-speed) var(--transition-ease);
 }
 
@@ -223,277 +189,195 @@ html, body {
 }
 
 .logo:hover .logo-brand {
-    color: var(--color-neon-teal);
+    color: var(--color-neon-green);
 }
 
 /* --------------------------------------------------------------------------
-   6. Hero & Main Glassmorphic Card
+   6. Left Info / Headings Section
    -------------------------------------------------------------------------- */
-.hero-card {
-    background-color: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 28px;
-    box-shadow: var(--shadow-glass);
-    padding: 4rem 3.5rem;
-    max-width: 680px;
-    width: 100%;
-    text-align: center;
-    transition: border-color var(--transition-speed) var(--transition-ease);
-}
-
-.hero-card:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Visual Badge */
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background-color: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 100px;
-    padding: 0.5rem 1rem;
-    margin-bottom: 2rem;
-}
-
-.badge-indicator {
-    width: 8px;
-    height: 8px;
-    background-color: var(--color-neon-green);
-    border-radius: 50%;
-    position: relative;
-}
-
-.badge-indicator::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: var(--color-neon-green);
-    animation: badge-ping 1.8s infinite ease-in-out;
-}
-
-@keyframes badge-ping {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(2.5); opacity: 0; }
-}
-
-.badge-text {
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    color: var(--color-text-main);
-    text-transform: uppercase;
-}
-
-/* Typography elements */
-.hero-title {
-    font-family: var(--font-heading);
-    font-size: 3.25rem;
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.25rem;
-}
-
-.gradient-text {
-    background: var(--grad-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-
-.hero-subtitle {
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: var(--color-text-sub);
-    line-height: 1.65;
-    margin-bottom: 2.75rem;
-    max-width: 580px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* --------------------------------------------------------------------------
-   7. Email Subscription Form
-   -------------------------------------------------------------------------- */
-.subscription-container {
-    width: 100%;
-}
-
-.subscription-form {
-    width: 100%;
-}
-
-.input-wrapper {
-    display: flex;
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--color-border);
-    border-radius: 100px;
-    padding: 0.35rem 0.35rem 0.35rem 1.5rem;
-    transition: all var(--transition-speed) var(--transition-ease);
-    align-items: center;
-}
-
-.input-prefix-icon {
-    display: flex;
-    align-items: center;
-    color: var(--color-text-muted);
-    transition: color var(--transition-speed) var(--transition-ease);
-}
-
-.email-input {
-    flex-grow: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--color-text-main);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    width: 100%;
-}
-
-.email-input::placeholder {
-    color: var(--color-text-muted);
-    opacity: 1;
-    transition: opacity var(--transition-speed) var(--transition-ease);
-}
-
-.email-input:focus::placeholder {
-    opacity: 0.5;
-}
-
-/* Focus and hover wrapper outline glow */
-.input-wrapper:focus-within {
-    border-color: var(--color-input-focus);
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.15), inset 0 0 8px rgba(0, 242, 254, 0.05);
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.input-wrapper:focus-within .input-prefix-icon {
-    color: var(--color-neon-teal);
-}
-
-/* Button CTA Styling */
-.submit-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--grad-button);
-    color: #03040b;
-    border: none;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 0.85rem 1.6rem;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all var(--transition-speed) var(--transition-ease);
-    position: relative;
-    overflow: hidden;
-}
-
-.submit-button span {
-    position: relative;
-    z-index: 2;
-}
-
-.arrow-icon {
-    position: relative;
-    z-index: 2;
-    transition: transform var(--transition-speed) var(--transition-ease);
-}
-
-/* Button effects and animations */
-.submit-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--grad-button-hover);
-    opacity: 0;
-    transition: opacity var(--transition-speed) var(--transition-ease);
-    z-index: 1;
-}
-
-.submit-button:hover {
-    box-shadow: var(--shadow-glow-button);
-    transform: translateY(-1px);
-}
-
-.submit-button:hover::before {
-    opacity: 1;
-}
-
-.submit-button:hover .arrow-icon {
-    transform: translateX(3px);
-}
-
-.submit-button:active {
-    transform: translateY(1px);
-}
-
-.submit-button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.submit-button.submitting .arrow-icon {
-    animation: rotate-spinner 1s infinite linear;
-}
-
-@keyframes rotate-spinner {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* --------------------------------------------------------------------------
-   8. Status Notifications
-   -------------------------------------------------------------------------- */
-.notification-box {
-    margin-top: 1.25rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 12px;
-    padding: 0.85rem 1.25rem;
-    display: none;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: all 0.4s var(--transition-ease);
+.info-section {
     text-align: left;
 }
 
-.notification-box.show {
-    opacity: 1;
-    transform: translateY(0);
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-main);
 }
 
-.notification-box.success {
-    background-color: rgba(0, 255, 102, 0.05);
-    border: 1px solid rgba(0, 255, 102, 0.25);
-    color: #a7ffd0;
-    box-shadow: var(--shadow-glow-success);
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-text-sub);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 520px;
 }
 
-.notification-box.error {
-    background-color: rgba(239, 68, 68, 0.05);
-    border: 1px solid rgba(239, 68, 68, 0.25);
-    color: #fecaca;
-    box-shadow: var(--shadow-glow-error);
+/* Premium Get In Touch Button */
+.cta-container {
+    display: flex;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--color-teal-brand);
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.9rem 2.2rem;
+    border-radius: 100px;
+    transition: all var(--transition-speed) var(--transition-ease);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.arrow-icon {
+    transition: transform var(--transition-speed) var(--transition-ease);
+}
+
+.cta-button:hover {
+    background-color: var(--color-neon-green);
+    color: #060713;
+    border-color: transparent;
+    box-shadow: 0 0 25px rgba(61, 242, 141, 0.35);
+    transform: translateY(-2px);
+}
+
+.cta-button:hover .arrow-icon {
+    transform: translateX(4px);
+}
+
+.cta-button:active {
+    transform: translateY(1px);
 }
 
 /* --------------------------------------------------------------------------
-   9. Footer Area & Contacts
+   7. Right Graphic Section ("WE BELIEVE")
+   -------------------------------------------------------------------------- */
+.graphic-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.we-believe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 440px;
+}
+
+/* We Believe typographic Lockup */
+.we-believe-header {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.we-text {
+    font-family: var(--font-accent);
+    font-size: 8.5rem;
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+    color: var(--color-neon-green);
+}
+
+.believe-badge {
+    position: absolute;
+    right: -95px;
+    top: 55%;
+    transform: translateY(-50%);
+    background-color: var(--color-teal-brand);
+    color: var(--color-text-main);
+    font-family: var(--font-accent);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.12em;
+    padding: 0.3rem 1rem;
+    border-radius: 2px;
+    user-select: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pillars Capsules */
+.pillars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.pillar-card {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: rgba(0, 122, 120, 0.18);
+    border: 1px solid rgba(0, 122, 120, 0.25);
+    border-radius: 100px;
+    padding: 0.85rem 1.5rem 0.85rem 4rem;
+    width: 100%;
+    transition: all var(--transition-speed) var(--transition-ease);
+}
+
+.pillar-card:hover {
+    background-color: rgba(0, 122, 120, 0.28);
+    border-color: rgba(0, 242, 254, 0.25);
+    transform: translateX(4px);
+}
+
+/* Skewed stripes on the left */
+.pillar-stripes {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%) skewX(-20deg);
+    display: flex;
+    gap: 4px;
+}
+
+.stripe {
+    width: 5px;
+    height: 18px;
+    border-radius: 1px;
+}
+
+.stripe-cyan {
+    background-color: var(--color-neon-teal);
+}
+
+.stripe-teal {
+    background-color: var(--color-teal-light);
+}
+
+.stripe-purple {
+    background-color: var(--color-purple);
+}
+
+.pillar-label {
+    font-family: var(--font-accent);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--color-teal-light);
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.pillar-card:hover .pillar-label {
+    color: var(--color-text-main);
+}
+
+/* --------------------------------------------------------------------------
+   8. Footer Area & Contacts
    -------------------------------------------------------------------------- */
 .footer {
     display: flex;
@@ -506,7 +390,6 @@ html, body {
     gap: 1.5rem;
 }
 
-/* Contact link styling */
 .contact-link {
     display: inline-flex;
     align-items: center;
@@ -524,14 +407,13 @@ html, body {
 }
 
 .contact-link:hover {
-    color: var(--color-neon-teal);
+    color: var(--color-neon-green);
 }
 
 .contact-link:hover .contact-icon {
-    color: var(--color-neon-teal);
+    color: var(--color-neon-green);
 }
 
-/* Social icons links */
 .social-group {
     display: flex;
     gap: 0.85rem;
@@ -545,8 +427,8 @@ html, body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--color-border);
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     color: var(--color-text-sub);
     transition: all var(--transition-speed) var(--transition-ease);
     text-decoration: none;
@@ -554,9 +436,9 @@ html, body {
 
 .social-link:hover {
     color: #03040b;
-    background: var(--grad-primary);
+    background: var(--color-neon-green);
     border-color: transparent;
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    box-shadow: 0 0 15px rgba(61, 242, 141, 0.3);
     transform: translateY(-2px);
 }
 
@@ -566,7 +448,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   10. Entrance Animations
+   9. Entrance Animations
    -------------------------------------------------------------------------- */
 .animate-fade-in {
     animation: fade-in 1s var(--transition-ease) forwards;
@@ -585,7 +467,7 @@ html, body {
 @keyframes slide-up {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(24px);
     }
     to {
         opacity: 1;
@@ -594,8 +476,39 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   11. Media Breakpoints & Responsiveness
+   10. Media Breakpoints & Responsiveness
    -------------------------------------------------------------------------- */
+@media (max-width: 968px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+        text-align: center;
+    }
+
+    .info-section {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 2rem;
+    }
+
+    .graphic-section {
+        justify-content: center;
+    }
+    
+    .we-believe-container {
+        align-items: center;
+    }
+}
+
 @media (max-width: 768px) {
     .app-container {
         padding: 1.5rem 1rem;
@@ -605,42 +518,17 @@ html, body {
         padding: 2rem 0;
     }
 
-    .hero-card {
-        padding: 3rem 2rem;
-        border-radius: 24px;
-    }
-
     .hero-title {
-        font-size: 2.35rem;
-        margin-bottom: 1rem;
+        font-size: 2.6rem;
     }
 
-    .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .input-wrapper {
-        flex-direction: column;
-        border-radius: 20px;
-        padding: 1rem;
-        gap: 1rem;
-    }
-    
-    .input-prefix-icon {
-        display: none; /* Hide icon inside text on mobile to save space */
+    .we-text {
+        font-size: 7.2rem;
     }
 
-    .email-input {
-        padding: 0.5rem;
-        text-align: center;
-    }
-
-    .submit-button {
-        width: 100%;
-        justify-content: center;
-        padding: 1rem;
-        font-size: 1rem;
+    .believe-badge {
+        font-size: 1.05rem;
+        right: -80px;
     }
 
     .footer {
@@ -656,12 +544,25 @@ html, body {
 }
 
 @media (max-width: 480px) {
-    .hero-card {
-        padding: 2.5rem 1.25rem;
-        border-radius: 20px;
+    .hero-title {
+        font-size: 2.1rem;
     }
 
-    .hero-title {
-        font-size: 1.95rem;
+    .we-text {
+        font-size: 6rem;
+    }
+
+    .believe-badge {
+        font-size: 0.95rem;
+        right: -70px;
+        padding: 0.25rem 0.75rem;
+    }
+    
+    .pillar-card {
+        padding: 0.75rem 1rem 0.75rem 3.5rem;
+    }
+    
+    .pillar-label {
+        font-size: 0.85rem;
     }
 }

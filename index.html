@@ -11,18 +11,17 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Ambient Animated Background Visuals -->
-    <div class="bg-grid" id="bg-grid"></div>
-    <div class="blob-wrapper">
-        <div class="blob blob-indigo" id="blob-indigo"></div>
-        <div class="blob blob-teal" id="blob-teal"></div>
-        <div class="blob blob-green" id="blob-green"></div>
+    <!-- Background Light Rays / Shafts -->
+    <div class="ray-container" id="ray-bg">
+        <div class="ray ray-1"></div>
+        <div class="ray ray-2"></div>
+        <div class="ray ray-3"></div>
     </div>
 
     <!-- Main App Container -->
@@ -51,40 +50,68 @@
 
         <!-- Hero / Content Area -->
         <main class="main-content" id="main-hero">
-            <div class="hero-card">
-                <!-- Status Badge -->
-                <div class="badge animate-slide-up" style="animation-delay: 0.1s;" id="badge-launch">
-                    <span class="badge-indicator"></span>
-                    <span class="badge-text">Launching Summer 2026</span>
-                </div>
-                
-                <!-- Main Heading -->
-                <h1 class="hero-title animate-slide-up" style="animation-delay: 0.2s;" id="hero-heading">
-                    Something <span class="gradient-text">Creative</span> <br>is Building.
-                </h1>
-                
-                <!-- Subheading -->
-                <p class="hero-subtitle animate-slide-up" style="animation-delay: 0.3s;" id="hero-subtext">
-                    Fueling creativity, building trust, and driving success! We are working hard to take your brand to new heights. Stay tuned!
-                </p>
-
-                <!-- Interactive Subscription form -->
-                <div class="subscription-container animate-slide-up" style="animation-delay: 0.4s;">
-                    <form class="subscription-form" id="subscribe-form" novalidate>
-                        <div class="input-wrapper">
-                            <span class="input-prefix-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            </span>
-                            <input type="email" id="email" class="email-input" placeholder="Enter your email address" required autocomplete="off" aria-label="Email address for updates">
-                            <button type="submit" id="submit-btn" class="submit-button" aria-label="Notify me on launch">
-                                <span>Notify Me</span>
-                                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                            </button>
-                        </div>
-                    </form>
+            <div class="hero-layout">
+                <!-- Info Section -->
+                <div class="info-section">
+                    <h1 class="hero-title animate-slide-up" style="animation-delay: 0.1s;" id="hero-heading">
+                        Something Creative <br>is Building.
+                    </h1>
                     
-                    <!-- Notification Messages -->
-                    <div id="notification" class="notification-box" role="alert"></div>
+                    <p class="hero-subtitle animate-slide-up" style="animation-delay: 0.2s;" id="hero-subtext">
+                        We are working hard to take your brand to new heights. Stay tuned!
+                    </p>
+
+                    <!-- Interactive Contact CTA Button -->
+                    <div class="cta-container animate-slide-up" style="animation-delay: 0.4s;">
+                        <a href="mailto:hello@conceptualsea.com" class="cta-button" id="cta-link">
+                            <span>Get in Touch</span>
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Core Brand Graphics ("WE BELIEVE") -->
+                <div class="graphic-section animate-slide-up" style="animation-delay: 0.3s;">
+                    <div class="we-believe-container">
+                        <!-- Lockup Header: WE BELIEVE -->
+                        <div class="we-believe-header">
+                            <span class="we-text">WE</span>
+                            <div class="believe-badge">BELIEVE</div>
+                        </div>
+
+                        <!-- Pillars List -->
+                        <div class="pillars-list">
+                            <!-- Pillar 1 -->
+                            <div class="pillar-card">
+                                <div class="pillar-stripes">
+                                    <span class="stripe stripe-cyan"></span>
+                                    <span class="stripe stripe-teal"></span>
+                                    <span class="stripe stripe-purple"></span>
+                                </div>
+                                <span class="pillar-label">CREATIVE STRATEGIES</span>
+                            </div>
+
+                            <!-- Pillar 2 -->
+                            <div class="pillar-card">
+                                <div class="pillar-stripes">
+                                    <span class="stripe stripe-cyan"></span>
+                                    <span class="stripe stripe-teal"></span>
+                                    <span class="stripe stripe-purple"></span>
+                                </div>
+                                <span class="pillar-label">TRUSTED PARTNERSHIPS</span>
+                            </div>
+
+                            <!-- Pillar 3 -->
+                            <div class="pillar-card">
+                                <div class="pillar-stripes">
+                                    <span class="stripe stripe-cyan"></span>
+                                    <span class="stripe stripe-teal"></span>
+                                    <span class="stripe stripe-purple"></span>
+                                </div>
+                                <span class="pillar-label">SUCCESSFUL OUTCOMES</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -120,69 +147,5 @@
             </div>
         </footer>
     </div>
-
-    <!-- Client-Side Subscription Logic -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('subscribe-form');
-            const emailInput = document.getElementById('email');
-            const submitBtn = document.getElementById('submit-btn');
-            const notification = document.getElementById('notification');
-
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-                
-                const emailValue = emailInput.value.trim();
-                
-                // Clear any existing notification state
-                notification.className = 'notification-box';
-                notification.textContent = '';
-                notification.style.display = 'none';
-                
-                // Email format validator regex
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                
-                if (!emailValue) {
-                    showNotification('Please enter your email address to register.', 'error');
-                    return;
-                }
-                
-                if (!emailRegex.test(emailValue)) {
-                    showNotification('Please enter a valid email address (e.g. name@domain.com).', 'error');
-                    return;
-                }
-                
-                // Set CTA button to submitting state
-                submitBtn.disabled = true;
-                submitBtn.classList.add('submitting');
-                const buttonSpan = submitBtn.querySelector('span');
-                const originalText = buttonSpan.textContent;
-                buttonSpan.textContent = 'Registering...';
-                
-                // Mock network request (1.2 seconds)
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('submitting');
-                    buttonSpan.textContent = originalText;
-                    
-                    showNotification(`Thank you! We will notify you at ${emailValue} when we launch.`, 'success');
-                    form.reset();
-                }, 1200);
-            });
-            
-            function showNotification(message, type) {
-                notification.textContent = message;
-                notification.classList.add(type);
-                notification.style.display = 'block';
-                
-                // Force a layout reflow to restart CSS animations
-                notification.style.animation = 'none';
-                notification.offsetHeight;
-                notification.style.animation = null;
-                
-                notification.classList.add('show');
-            }
-        });
-    </script>
 </body>
 </html>
