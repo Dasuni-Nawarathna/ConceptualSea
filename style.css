@@ -1,0 +1,677 @@
+/* ==========================================================================
+   CONCEPTUALSEA - BRANDING AND CSS STYLING SYSTEM
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design System & Variables
+   -------------------------------------------------------------------------- */
+:root {
+    /* Fonts */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Color Palette */
+    --color-bg-dark: #060713;
+    --color-bg-card: rgba(13, 16, 38, 0.45);
+    
+    /* Borders */
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-hover: rgba(0, 242, 254, 0.4);
+    --color-input-focus: rgba(0, 242, 254, 0.5);
+
+    /* Text Colors */
+    --color-text-main: #f8fafc;
+    --color-text-sub: #94a3b8;
+    --color-text-muted: #64748b;
+
+    /* Accent & Brand Colors */
+    --color-neon-green: #00ff66;
+    --color-neon-teal: #00f2fe;
+    --color-neon-blue: #3b82f6;
+    
+    /* Gradients */
+    --grad-primary: linear-gradient(135deg, #00f2fe 0%, #00b8ff 50%, #00ff66 100%);
+    --grad-button: linear-gradient(90deg, #00f2fe 0%, #00ff66 100%);
+    --grad-button-hover: linear-gradient(90deg, #00ff66 0%, #00f2fe 100%);
+
+    /* Shadows & Glows */
+    --shadow-glass: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    --shadow-glow-button: 0 0 25px rgba(0, 242, 254, 0.35);
+    --shadow-glow-success: 0 0 20px rgba(0, 255, 102, 0.15);
+    --shadow-glow-error: 0 0 20px rgba(ef, 44, 44, 0.15);
+
+    /* Animation and Transitions */
+    --transition-speed: 0.35s;
+    --transition-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Global Styles
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-main);
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   3. Ambient Background Elements
+   -------------------------------------------------------------------------- */
+/* Geometric Grid Overlay */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Blurred Plasma Blobs */
+.blob-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(130px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+}
+
+.blob-indigo {
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.45) 0%, transparent 70%);
+    top: -15%;
+    left: -10%;
+    animation: float-blob-1 25s infinite alternate ease-in-out;
+}
+
+.blob-teal {
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, transparent 70%);
+    bottom: -10%;
+    right: -5%;
+    animation: float-blob-2 20s infinite alternate-reverse ease-in-out;
+}
+
+.blob-green {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(0, 255, 102, 0.25) 0%, transparent 70%);
+    top: 30%;
+    left: 65%;
+    animation: float-blob-3 28s infinite alternate ease-in-out;
+}
+
+@keyframes float-blob-1 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(80px, -50px) scale(1.1); }
+    100% { transform: translate(-40px, 60px) scale(0.95); }
+}
+
+@keyframes float-blob-2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-60px, 80px) scale(1.05); }
+    100% { transform: translate(40px, -40px) scale(0.9); }
+}
+
+@keyframes float-blob-3 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, 50px) scale(1.15); }
+    100% { transform: translate(-70px, -70px) scale(0.85); }
+}
+
+/* --------------------------------------------------------------------------
+   4. Structure Layout
+   -------------------------------------------------------------------------- */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    justify-content: space-between;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Header & Logo
+   -------------------------------------------------------------------------- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    user-select: none;
+}
+
+.logo-icon {
+    filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.3));
+    transition: transform var(--transition-speed) var(--transition-ease);
+}
+
+.logo:hover .logo-icon {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.logo-pulse-dot {
+    animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 2px rgba(0,255,102,0.4)); }
+    50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(0,255,102,1)); }
+}
+
+.logo-brand {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-main);
+}
+
+.brand-suffix {
+    background: var(--grad-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero & Main Glassmorphic Card
+   -------------------------------------------------------------------------- */
+.hero-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 28px;
+    box-shadow: var(--shadow-glass);
+    padding: 4rem 3.5rem;
+    max-width: 680px;
+    width: 100%;
+    text-align: center;
+    transition: border-color var(--transition-speed) var(--transition-ease);
+}
+
+.hero-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Visual Badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.badge-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-neon-green);
+    border-radius: 50%;
+    position: relative;
+}
+
+.badge-indicator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--color-neon-green);
+    animation: badge-ping 1.8s infinite ease-in-out;
+}
+
+@keyframes badge-ping {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+.badge-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+}
+
+/* Typography elements */
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+}
+
+.gradient-text {
+    background: var(--grad-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--color-text-sub);
+    line-height: 1.65;
+    margin-bottom: 2.75rem;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   7. Email Subscription Form
+   -------------------------------------------------------------------------- */
+.subscription-container {
+    width: 100%;
+}
+
+.subscription-form {
+    width: 100%;
+}
+
+.input-wrapper {
+    display: flex;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    padding: 0.35rem 0.35rem 0.35rem 1.5rem;
+    transition: all var(--transition-speed) var(--transition-ease);
+    align-items: center;
+}
+
+.input-prefix-icon {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.email-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+}
+
+.email-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+    transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.email-input:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Focus and hover wrapper outline glow */
+.input-wrapper:focus-within {
+    border-color: var(--color-input-focus);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.15), inset 0 0 8px rgba(0, 242, 254, 0.05);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.input-wrapper:focus-within .input-prefix-icon {
+    color: var(--color-neon-teal);
+}
+
+/* Button CTA Styling */
+.submit-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--grad-button);
+    color: #03040b;
+    border: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-ease);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.arrow-icon {
+    position: relative;
+    z-index: 2;
+    transition: transform var(--transition-speed) var(--transition-ease);
+}
+
+/* Button effects and animations */
+.submit-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--grad-button-hover);
+    opacity: 0;
+    transition: opacity var(--transition-speed) var(--transition-ease);
+    z-index: 1;
+}
+
+.submit-button:hover {
+    box-shadow: var(--shadow-glow-button);
+    transform: translateY(-1px);
+}
+
+.submit-button:hover::before {
+    opacity: 1;
+}
+
+.submit-button:hover .arrow-icon {
+    transform: translateX(3px);
+}
+
+.submit-button:active {
+    transform: translateY(1px);
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.submit-button.submitting .arrow-icon {
+    animation: rotate-spinner 1s infinite linear;
+}
+
+@keyframes rotate-spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   8. Status Notifications
+   -------------------------------------------------------------------------- */
+.notification-box {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 12px;
+    padding: 0.85rem 1.25rem;
+    display: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.4s var(--transition-ease);
+    text-align: left;
+}
+
+.notification-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification-box.success {
+    background-color: rgba(0, 255, 102, 0.05);
+    border: 1px solid rgba(0, 255, 102, 0.25);
+    color: #a7ffd0;
+    box-shadow: var(--shadow-glow-success);
+}
+
+.notification-box.error {
+    background-color: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #fecaca;
+    box-shadow: var(--shadow-glow-error);
+}
+
+/* --------------------------------------------------------------------------
+   9. Footer Area & Contacts
+   -------------------------------------------------------------------------- */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    gap: 1.5rem;
+}
+
+/* Contact link styling */
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--color-text-sub);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-speed) var(--transition-ease);
+}
+
+.contact-icon {
+    color: var(--color-text-muted);
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.contact-link:hover {
+    color: var(--color-neon-teal);
+}
+
+.contact-link:hover .contact-icon {
+    color: var(--color-neon-teal);
+}
+
+/* Social icons links */
+.social-group {
+    display: flex;
+    gap: 0.85rem;
+    justify-content: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-sub);
+    transition: all var(--transition-speed) var(--transition-ease);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    color: #03040b;
+    background: var(--grad-primary);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    transform: translateY(-2px);
+}
+
+.copyright-text {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   10. Entrance Animations
+   -------------------------------------------------------------------------- */
+.animate-fade-in {
+    animation: fade-in 1s var(--transition-ease) forwards;
+}
+
+.animate-slide-up {
+    opacity: 0;
+    animation: slide-up 0.85s var(--transition-ease) forwards;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   11. Media Breakpoints & Responsiveness
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .main-content {
+        padding: 2rem 0;
+    }
+
+    .hero-card {
+        padding: 3rem 2rem;
+        border-radius: 24px;
+    }
+
+    .hero-title {
+        font-size: 2.35rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .input-wrapper {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .input-prefix-icon {
+        display: none; /* Hide icon inside text on mobile to save space */
+    }
+
+    .email-input {
+        padding: 0.5rem;
+        text-align: center;
+    }
+
+    .submit-button {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.25rem;
+        padding-top: 1.5rem;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-card {
+        padding: 2.5rem 1.25rem;
+        border-radius: 20px;
+    }
+
+    .hero-title {
+        font-size: 1.95rem;
+    }
+}
