@@ -104,7 +104,7 @@ html, body {
 .header {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -136,6 +136,27 @@ html, body {
 
 .logo:hover .logo-brand {
     color: var(--color-accent-green);
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-text-main);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    padding: 0.5rem 1.25rem;
+    transition: all var(--transition-speed) var(--transition-ease);
+}
+
+.contact-btn:hover {
+    border-color: var(--color-accent-green);
+    color: var(--color-accent-green);
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 /* --------------------------------------------------------------------------
@@ -200,30 +221,7 @@ html, body {
     gap: 1.5rem;
 }
 
-/* Contact link styling */
-.contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    color: var(--color-text-sub);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color var(--transition-speed) var(--transition-ease);
-}
 
-.contact-icon {
-    color: var(--color-text-muted);
-    transition: color var(--transition-speed) var(--transition-ease);
-}
-
-.contact-link:hover {
-    color: var(--color-accent-green);
-}
-
-.contact-link:hover .contact-icon {
-    color: var(--color-accent-green);
-}
 
 /* Social group styling - Clean and Minimal */
 .social-group {
