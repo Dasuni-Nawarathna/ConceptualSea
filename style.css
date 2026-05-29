@@ -49,7 +49,26 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   3. Structure Layout (Centered single-column layout)
+   3. Wave Background (Custom vector ocean waves)
+   -------------------------------------------------------------------------- */
+.wave-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.wave-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   4. Structure Layout (Centered single-column layout)
    -------------------------------------------------------------------------- */
 .app-container {
     display: flex;
@@ -139,6 +158,33 @@ html, body {
     line-height: 1.7;
     margin-top: 1.5rem;
     max-width: 620px;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-accent-teal) 0%, var(--color-accent-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.services-index {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--color-text-sub);
+    user-select: none;
+}
+
+.services-index .separator {
+    color: var(--color-text-muted);
+    opacity: 0.6;
 }
 
 /* --------------------------------------------------------------------------
@@ -261,6 +307,10 @@ html, body {
         margin-top: 1.25rem;
     }
 
+    .wave-container {
+        height: 180px;
+    }
+
     .footer {
         flex-direction: column;
         text-align: center;
@@ -278,5 +328,15 @@ html, body {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2.2rem;
+    }
+
+    .wave-container {
+        height: 120px;
+    }
+
+    .services-index {
+        font-size: 0.75rem;
+        gap: 0.5rem;
+        margin-top: 2rem;
     }
 }

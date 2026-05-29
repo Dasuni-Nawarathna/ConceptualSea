@@ -11,12 +11,24 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Layered Vector Wave Background (Representing the "sea") -->
+    <div class="wave-container" id="wave-bg">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Layer 1: Indigo Wave -->
+            <path d="M0,160 C320,320,640,0,960,160 C1120,240,1280,240,1440,160 L1440,320 L0,320 Z" fill="rgba(35, 28, 106, 0.15)"></path>
+            <!-- Layer 2: Teal Wave -->
+            <path d="M0,224 C320,128,640,288,960,192 C1120,144,1280,256,1440,224 L1440,320 L0,320 Z" fill="rgba(13, 148, 136, 0.04)"></path>
+            <!-- Layer 3: Green Wave -->
+            <path d="M0,288 C320,256,640,320,960,256 C1120,224,1280,288,1440,256 L1440,320 L0,320 Z" fill="rgba(16, 185, 129, 0.02)"></path>
+        </svg>
+    </div>
+
     <!-- Main App Container -->
     <div class="app-container">
         <!-- Header Section -->
@@ -45,17 +57,26 @@
         <main class="main-content" id="main-hero">
             <div class="hero-layout">
                 <h1 class="hero-title animate-slide-up" style="animation-delay: 0.1s;" id="hero-heading">
-                    Something Creative <br>is Building.
+                    Something <span class="gradient-text">Creative</span> <br>is Building.
                 </h1>
                 
                 <p class="hero-subtitle animate-slide-up" style="animation-delay: 0.2s;" id="hero-subtext">
                     Fueling creativity, building trust, and driving success. We are working hard to take your brand to new heights. Stay tuned!
                 </p>
+
+                <!-- Clean Typographic Services Index -->
+                <div class="services-index animate-slide-up" style="animation-delay: 0.3s;">
+                    <span>BRAND IDENTITY</span>
+                    <span class="separator">//</span>
+                    <span>DIGITAL MARKETING</span>
+                    <span class="separator">//</span>
+                    <span>CREATIVE EXPERIENCE</span>
+                </div>
             </div>
         </main>
 
         <!-- Footer Area -->
-        <footer class="footer animate-fade-in" style="animation-delay: 0.3s;" id="main-footer">
+        <footer class="footer animate-fade-in" style="animation-delay: 0.4s;" id="main-footer">
             <div class="footer-left">
                 <a href="mailto:hello@conceptualsea.com" class="contact-link" id="email-link">
                     <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
